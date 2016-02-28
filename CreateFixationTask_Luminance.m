@@ -18,8 +18,6 @@ function [dcolor, colors] = CreateFixationTask_Luminance(nframes,fixrate,nlum)
 % 02/24/16, RZ created it based on function CreateFixationTask.m from Jason Yeatman 
 %           
 
-% ,
-
 if ~exist('nframes','var')||isempty('nframes')
     error('please the input number of frames you want');
 end

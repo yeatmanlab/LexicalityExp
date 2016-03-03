@@ -19,7 +19,7 @@ function [dcolor, colors] = CreateFixationTask_Luminance(nframes,fixrate,nlum)
 %           
 
 if ~exist('nframes','var')||isempty('nframes')
-    error('please the input number of frames you want');
+    error('please input the number of frames you want');
 end
 
 if ~exist('fixrate','var')||isempty('fixrate')

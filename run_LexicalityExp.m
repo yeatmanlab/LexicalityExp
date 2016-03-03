@@ -29,6 +29,19 @@ ptonparams = {[],[],0,skipsync};  % don't change resolution
 fixationsize = [11 0];
 grayval = uint8(127);
 scfactor = 0.7858;  % scale images bigger or smaller
+contrast_factor = 1;% scale contrast of two lower level contrasts
+
+%scale the contrast
+if contrast_factor ~= 1
+    pixVal = unique(img);
+    pixVal_tmp = pixVal(2:end); % 
+    pixVal_tmp = (pixVal_tmp-grayval) * contrast_factor + grayval;
+    pixVal_tmp(pixVal_tmp>254) = 254; % set maxima pixel value
+    for i=1:size(pixVal_tmp,1);
+        img(img==pixVal(i+1)) = pixVal_tmp(i); % change the pix value to new contrast
+    end
+end
+
 %tfun = [];
 
 %% Run experiment
@@ -38,7 +51,7 @@ oldclut = pton(ptonparams{:});
     ptviewmovie(reshape(img,[size(img,1), size(img,2), 1 , size(img,3)]), ...
     frameorder(runnum,:),[],frameduration,fixorder(runnum,:),fixcolor, ...
     fixationsize,grayval,[],[],offset,[],movieflip,scfactor,[], ...
-    [],[],[],'5',[],[]);
+    [],[],[],'t',[],[]); % scanner button box trigger, for letter, use 't' ; for digit, use "5" 
 ptoff(oldclut);
 
 %Save the timing info and key button press for future analysis

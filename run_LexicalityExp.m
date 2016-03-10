@@ -20,7 +20,7 @@ fprintf('\n\nRUNNING LEXICALITY EXPERIMENT STIMFILE %s\nRUN %d',stimfile,runnum)
 skipsync = 1
 offset = [];  % [] means no translation of the stimuli
 movieflip = [0 0];  % [0 0] means no flips.  [1 0] is necessary for flexi mirror to show up right-side up
-frameduration = 12;  % number of monitor frames for one unit.  60/5 = 12
+frameduration = 24;  % number of monitor frames for one unit.  60/5 = 12
 ptonparams = {[],[],0,skipsync};  % don't change resolution
 
 
@@ -29,7 +29,7 @@ ptonparams = {[],[],0,skipsync};  % don't change resolution
 fixationsize = [11 0];
 grayval = uint8(127);
 scfactor = 0.7858;  % scale images bigger or smaller
-contrast_factor = 1;% scale contrast of two lower level contrasts
+contrast_factor = 2;% scale contrast of two lower level contrasts
 
 %scale the contrast
 if contrast_factor ~= 1
